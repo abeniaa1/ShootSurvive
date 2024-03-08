@@ -1,0 +1,99 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scripts/bullet.gd" type="Script" id=1]
+[ext_resource path="res://sound/impact.mp3" type="AudioStream" id=3]
+[ext_resource path="res://scripts/Line2D.gd" type="Script" id=4]
+
+[sub_resource type="Curve" id=7]
+_data = [ Vector2( 0, 0.917178 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0.55303, 1 )
+colors = PoolColorArray( 0.910156, 0.405304, 0, 1, 1, 0.726563, 0, 1 )
+
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 1.33333
+height = 0.0
+
+[sub_resource type="CameraTexture" id=3]
+
+[sub_resource type="Gradient" id=5]
+colors = PoolColorArray( 1, 0, 0, 1, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture2D" id=6]
+gradient = SubResource( 5 )
+width = 500
+height = 500
+fill = 1
+fill_from = Vector2( 0.534916, 0.46229 )
+fill_to = Vector2( 0, 1 )
+
+[sub_resource type="CapsuleMesh" id=9]
+radius = 16.534
+
+[sub_resource type="CircleShape2D" id=10]
+radius = 16.0312
+
+[node name="bullet" type="KinematicBody2D"]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource( 1 )
+speed = 4000.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color( 1, 0.729412, 0.403922, 1 )
+self_modulate = Color( 1, 0.615686, 0, 1 )
+position = Vector2( -20, 1 )
+amount = 100
+lifetime = 1.76
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 35.12
+spread = 180.0
+gravity = Vector2( -1000, 0 )
+initial_velocity = 32.9
+scale_amount = 10.5
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 7 )
+color = Color( 0.964706, 0.631373, 0.0588235, 1 )
+color_ramp = SubResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2( 3, 3 )
+collision_layer = 8
+collision_mask = 136
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.5708
+scale = Vector2( 4, 6 )
+shape = SubResource( 8 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+
+[node name="impact" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = -20.0
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = SubResource( 3 )
+color = Color( 0.796078, 0.243137, 0.027451, 1 )
+energy = 9.47
+range_height = 3.8
+
+[node name="Line2D" type="Line2D" parent="."]
+default_color = Color( 1, 0, 0, 1 )
+script = ExtResource( 4 )
+leng = 500
+
+[node name="Light2D2" type="Light2D" parent="."]
+texture = SubResource( 6 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+mesh = SubResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 10 )
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

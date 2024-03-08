@@ -1,0 +1,112 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://joystick/virtual_joystick.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/enemy_spawner.gd" type="Script" id=3]
+[ext_resource path="res://scripts/poweup.gd" type="Script" id=4]
+[ext_resource path="res://scripts/ui.gd" type="Script" id=5]
+[ext_resource path="res://resouce/ground/Path2D.tscn" type="PackedScene" id=8]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0.00568182, 1 )
+colors = PoolColorArray( 0, 0.1789, 0.495117, 1, 0, 0.0400448, 0.31543, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.458824, 0.458824, 0.458824, 1 )
+
+[node name="main" type="Node2D"]
+
+[node name="06" type="Sprite" parent="."]
+scale = Vector2( 5000, 5000 )
+texture = SubResource( 4 )
+
+[node name="player2" parent="." instance=ExtResource( 1 )]
+scale = Vector2( 0.3, 0.3 )
+
+[node name="Camera2D" type="Camera2D" parent="player2"]
+rotating = true
+current = true
+zoom = Vector2( 1.5, 1.5 )
+smoothing_enabled = true
+
+[node name="enemy" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="enemy"]
+
+[node name="poweup" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="ui" type="CanvasLayer" parent="."]
+pause_mode = 2
+physics_interpolation_mode = 1
+script = ExtResource( 5 )
+
+[node name="score" type="Label" parent="ui"]
+anchor_right = 0.03
+margin_left = -27.0
+margin_top = -69.0
+margin_right = 404.0
+margin_bottom = 199.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 2
+custom_colors/font_color = Color( 1, 0.223529, 0.223529, 1 )
+text = "ASS"
+align = 1
+valign = 1
+
+[node name="Virtual joystick" parent="ui" instance=ExtResource( 2 )]
+anchor_top = 0.0
+anchor_right = 1.0
+margin_left = 122.0
+margin_top = 509.0
+margin_right = -113.0
+margin_bottom = -21.0
+
+[node name="upgrades" type="VBoxContainer" parent="ui"]
+pause_mode = 2
+visible = false
+margin_right = 396.0
+margin_bottom = 449.0
+
+[node name="1" type="Button" parent="ui/upgrades"]
+margin_right = 396.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 0, 150 )
+text = "cooldown"
+
+[node name="2" type="Button" parent="ui/upgrades"]
+margin_top = 154.0
+margin_right = 396.0
+margin_bottom = 304.0
+rect_min_size = Vector2( 0, 150 )
+text = "shild"
+
+[node name="3" type="Button" parent="ui/upgrades"]
+margin_top = 308.0
+margin_right = 396.0
+margin_bottom = 458.0
+rect_min_size = Vector2( 0, 150 )
+text = "damage"
+
+[node name="metal" type="VSlider" parent="ui"]
+margin_left = 4.0
+margin_top = 492.0
+margin_right = 48.0
+margin_bottom = 686.0
+custom_styles/grabber_area = SubResource( 5 )
+editable = false
+scrollable = false
+
+[node name="map" type="Node2D" parent="."]
+
+[node name="Path2D" parent="map" instance=ExtResource( 8 )]
+
+[connection signal="timeout" from="enemy/Timer" to="enemy" method="_on_Timer_timeout"]
+[connection signal="button_down" from="ui/upgrades/1" to="ui" method="_on_1_button_down"]
+[connection signal="button_up" from="ui/upgrades/2" to="ui" method="_on_2_button_up"]
+[connection signal="button_down" from="ui/upgrades/3" to="ui" method="_on_3_button_down"]

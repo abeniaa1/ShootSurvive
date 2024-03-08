@@ -1,0 +1,517 @@
+[gd_scene load_steps=39 format=2]
+
+[ext_resource path="res://resouce/enemy/0010.png" type="Texture" id=1]
+[ext_resource path="res://scripts/enemy.gd" type="Script" id=2]
+[ext_resource path="res://resouce/enemy/0007.png" type="Texture" id=3]
+[ext_resource path="res://resouce/enemy/0009.png" type="Texture" id=4]
+[ext_resource path="res://resouce/enemy/0006.png" type="Texture" id=5]
+[ext_resource path="res://resouce/enemy/0005.png" type="Texture" id=6]
+[ext_resource path="res://resouce/enemy/0008.png" type="Texture" id=7]
+[ext_resource path="res://resouce/enemy/0011.png" type="Texture" id=8]
+[ext_resource path="res://resouce/enemy/0014.png" type="Texture" id=9]
+[ext_resource path="res://resouce/enemy/0015.png" type="Texture" id=10]
+[ext_resource path="res://resouce/enemy/0016.png" type="Texture" id=11]
+[ext_resource path="res://resouce/enemy/0013.png" type="Texture" id=12]
+[ext_resource path="res://resouce/enemy/0012.png" type="Texture" id=13]
+[ext_resource path="res://resouce/enemy/0017.png" type="Texture" id=14]
+[ext_resource path="res://resouce/enemy/0018.png" type="Texture" id=15]
+[ext_resource path="res://resouce/enemy/0026.png" type="Texture" id=19]
+[ext_resource path="res://resouce/enemy/0024.png" type="Texture" id=24]
+[ext_resource path="res://resouce/enemy/0023.png" type="Texture" id=25]
+[ext_resource path="res://resouce/enemy/0029.png" type="Texture" id=27]
+[ext_resource path="res://resouce/enemy/0025.png" type="Texture" id=32]
+[ext_resource path="res://resouce/enemy/0028.png" type="Texture" id=35]
+[ext_resource path="res://resouce/enemy/0027.png" type="Texture" id=38]
+[ext_resource path="res://resouce/enemy/0020.png" type="Texture" id=41]
+[ext_resource path="res://resouce/enemy/0021.png" type="Texture" id=42]
+[ext_resource path="res://resouce/enemy/0019.png" type="Texture" id=45]
+[ext_resource path="res://resouce/enemy/0022.png" type="Texture" id=46]
+[ext_resource path="res://resouce/enemy/0030.png" type="Texture" id=47]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 46.0435
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 41.0
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 1 ), ExtResource( 8 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 45 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 46 ), ExtResource( 25 ), ExtResource( 24 ), ExtResource( 32 ), ExtResource( 19 ), ExtResource( 38 ), ExtResource( 35 ), ExtResource( 27 ), ExtResource( 47 ) ],
+"loop": true,
+"name": "run",
+"speed": 30.0
+} ]
+
+[sub_resource type="Curve" id=11]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.958054, 0.659509 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.0214723 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=12]
+offsets = PoolRealArray( 0.227273, 1 )
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ null ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:dead")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("AnimatedSprite:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("AnimatedSprite:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("AnimatedSprite:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("AnimatedSprite:scale:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Area2D:monitoring")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Area2D:monitorable")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/8/type = "bezier"
+tracks/8/path = NodePath(".:position:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath(".:position:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/10/type = "bezier"
+tracks/10/path = NodePath("AnimatedSprite:modulate:r")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/11/type = "bezier"
+tracks/11/path = NodePath("AnimatedSprite:modulate:g")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/12/type = "bezier"
+tracks/12/path = NodePath("AnimatedSprite:modulate:b")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/13/type = "bezier"
+tracks/13/path = NodePath("AnimatedSprite:modulate:a")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/14/type = "bezier"
+tracks/14/path = NodePath("damage:scale:x")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/15/type = "bezier"
+tracks/15/path = NodePath("damage:scale:y")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("damage:monitoring")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("damage:monitorable")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Shader" id=6]
+code = "shader_type canvas_item;
+
+const vec2 center = vec2(0.5, 0.5);
+uniform float intensity : hint_range(0.0, 20.0) = 9.14159265359;
+varying float angle;
+varying float time;
+uniform float radius : hint_range(0.0, 1.0) = 0.5;
+
+void fragment() {
+    // Get the current UV coordinates
+    vec2 uv = UV;
+
+    // Ignoring the outbound zone
+    if (length(center - uv) > radius) {
+        COLOR = texture(TEXTURE, UV);
+    } else {
+        // Calculate the time value
+        time = abs(cos(TIME * 1.0));
+
+        // Calculate the angle based on the distance to the center and time
+        angle = intensity * (length(center - uv) - sqrt(0.5)) * time;
+
+        // Rotate the UV coordinates around the center of the sprite
+        uv -= vec2(0.5, 0.5);
+        uv = vec2(
+            uv.x * cos(angle) - uv.y * sin(angle),
+            uv.x * sin(angle) + uv.y * cos(angle)
+        );
+        uv += vec2(0.5, 0.5);
+
+        // Output the result pixel from the original texture
+        COLOR = texture(TEXTURE, uv);
+    }
+}"
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 6 )
+shader_param/intensity = 20.0
+shader_param/radius = 0.818
+
+[sub_resource type="Animation" id=9]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ SubResource( 7 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:dead")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("AnimatedSprite:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("AnimatedSprite:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("AnimatedSprite:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 17.5, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("AnimatedSprite:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 5.5, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("damage:scale:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/7/type = "bezier"
+tracks/7/path = NodePath("damage:scale:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("damage:monitoring")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "hit"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("AnimatedSprite:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0.917647, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.917647, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.917647, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.7, 0.9, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("AnimatedSprite:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.7, 0.9, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("AnimatedSprite:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.7, 0.9, 1 )
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ null ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("damage:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("damage:monitorable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="enemy" type="KinematicBody2D" groups=["enemies"]]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 1, 0 )
+collision_layer = 0
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 5 )
+animation = "run"
+frame = 4
+playing = true
+
+[node name="hit" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 80
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.84
+lifetime_randomness = 0.2
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 256.38
+initial_velocity_random = 1.0
+angular_velocity = 1.76
+angular_velocity_random = 0.14
+orbit_velocity = -0.61
+orbit_velocity_random = 0.52
+scale_amount = 5.0
+scale_amount_curve = SubResource( 11 )
+color_ramp = SubResource( 12 )
+hue_variation = 0.94
+hue_variation_random = 0.11
+
+[node name="anim" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 8 )
+anims/die = SubResource( 9 )
+anims/hit = SubResource( 15 )
+anims/idle = SubResource( 10 )
+
+[node name="time" type="Timer" parent="."]
+
+[node name="damage" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 256
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="damage"]
+position = Vector2( 1, 0 )
+shape = SubResource( 2 )
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

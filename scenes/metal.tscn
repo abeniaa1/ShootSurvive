@@ -1,0 +1,263 @@
+[gd_scene load_steps=40 format=2]
+
+[ext_resource path="res://resouce/metal/0001.png" type="Texture" id=1]
+[ext_resource path="res://resouce/metal/0002.png" type="Texture" id=2]
+[ext_resource path="res://resouce/metal/0003.png" type="Texture" id=3]
+[ext_resource path="res://resouce/metal/0004.png" type="Texture" id=4]
+[ext_resource path="res://resouce/metal/0005.png" type="Texture" id=5]
+[ext_resource path="res://scripts/metal.gd" type="Script" id=6]
+[ext_resource path="res://resouce/metal/0008.png" type="Texture" id=7]
+[ext_resource path="res://resouce/metal/0012.png" type="Texture" id=8]
+[ext_resource path="res://resouce/metal/0016.png" type="Texture" id=9]
+[ext_resource path="res://resouce/metal/0022.png" type="Texture" id=10]
+[ext_resource path="res://resouce/metal/0025.png" type="Texture" id=11]
+[ext_resource path="res://resouce/metal/untitled.png" type="Texture" id=12]
+[ext_resource path="res://resouce/metal/0015.png" type="Texture" id=13]
+[ext_resource path="res://resouce/metal/0011.png" type="Texture" id=14]
+[ext_resource path="res://resouce/metal/0026.png" type="Texture" id=15]
+[ext_resource path="res://resouce/metal/0018.png" type="Texture" id=16]
+[ext_resource path="res://resouce/metal/0007.png" type="Texture" id=17]
+[ext_resource path="res://resouce/metal/0006.png" type="Texture" id=18]
+[ext_resource path="res://resouce/metal/0014.png" type="Texture" id=19]
+[ext_resource path="res://resouce/metal/0027.png" type="Texture" id=20]
+[ext_resource path="res://resouce/metal/0021.png" type="Texture" id=21]
+[ext_resource path="res://resouce/metal/0009.png" type="Texture" id=22]
+[ext_resource path="res://resouce/metal/0020.png" type="Texture" id=23]
+[ext_resource path="res://resouce/metal/0023.png" type="Texture" id=24]
+[ext_resource path="res://resouce/metal/0029.png" type="Texture" id=25]
+[ext_resource path="res://resouce/metal/0013.png" type="Texture" id=26]
+[ext_resource path="res://resouce/metal/0024.png" type="Texture" id=27]
+[ext_resource path="res://resouce/metal/0010.png" type="Texture" id=28]
+[ext_resource path="res://resouce/metal/0019.png" type="Texture" id=29]
+[ext_resource path="res://resouce/metal/0030.png" type="Texture" id=30]
+[ext_resource path="res://resouce/metal/0017.png" type="Texture" id=31]
+[ext_resource path="res://resouce/metal/0028.png" type="Texture" id=32]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 71, 38 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 96.1
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "idle" ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("AnimatedSprite:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0.2775, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("AnimatedSprite:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0.265, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("KinematicBody2D/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("explosion:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("KinematicBody2D:collision_layer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("KinematicBody2D:collision_mask")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "collect"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "collect" ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("AnimatedSprite:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0.2775, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("AnimatedSprite:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0.265, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("KinematicBody2D/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( -0.1, 0 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("explosion:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( -0.1, 0 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("KinematicBody2D:collision_layer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 16, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( -0.1, 0.1 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("KinematicBody2D:collision_mask")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 16, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( -0.1, 0.1 )
+}
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 7 ), ExtResource( 22 ), ExtResource( 28 ), ExtResource( 14 ), ExtResource( 8 ), ExtResource( 26 ), ExtResource( 19 ), ExtResource( 13 ), ExtResource( 9 ), ExtResource( 31 ), ExtResource( 16 ), ExtResource( 29 ), ExtResource( 23 ), ExtResource( 21 ), ExtResource( 10 ), ExtResource( 24 ), ExtResource( 27 ), ExtResource( 11 ), ExtResource( 15 ), ExtResource( 20 ), ExtResource( 32 ), ExtResource( 25 ), ExtResource( 30 ) ],
+"loop": false,
+"name": "collect",
+"speed": 30.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="Curve" id=6]
+_data = [ Vector2( 0, 0.40184 ), 0.0, 0.0, 0, 0, Vector2( 0.340604, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.528524, 0.622699 ), 0.0, 0.0, 0, 0, Vector2( 0.864094, 0.205521 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0, 0.287879 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.137255, 0.0901961, 0.0823529, 1 )
+
+[node name="metal" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource( 6 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 2, 0 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." groups=["projectiles"]]
+anims/RESET = SubResource( 4 )
+anims/collect = SubResource( 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0.999999, 4.76837e-07 )
+scale = Vector2( 0.2775, 0.265 )
+frames = SubResource( 1 )
+animation = "idle"
+playing = true
+
+[node name="explosion" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 100
+one_shot = true
+explosiveness = 0.38
+emission_shape = 2
+emission_rect_extents = Vector2( 5, 5 )
+spread = 180.0
+initial_velocity = 122.45
+scale_amount = 12.21
+scale_amount_curve = SubResource( 6 )
+color_ramp = SubResource( 7 )
+
+[connection signal="area_entered" from="." to="." method="_on_metal_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
