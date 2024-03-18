@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://joystick/virtual_joystick.tscn" type="PackedScene" id=2]
@@ -8,14 +8,20 @@
 [ext_resource path="res://resouce/ground/Path2D.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Gradient" id=3]
-offsets = PoolRealArray( 0, 0.00568182, 0.721591 )
-colors = PoolColorArray( 0, 0.0582703, 0.161267, 1, 1, 1, 1, 1, 0, 0, 0, 1 )
+offsets = PoolRealArray( 0, 0.721591 )
+colors = PoolColorArray( 0, 0.0582703, 0.161267, 1, 0, 0, 0, 1 )
 
 [sub_resource type="GradientTexture" id=4]
 gradient = SubResource( 3 )
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.458824, 0.458824, 0.458824, 1 )
+
+[sub_resource type="Environment" id=6]
+background_mode = 4
+glow_enabled = true
+glow_bloom = 0.18
+glow_blend_mode = 0
 
 [node name="main" type="Node2D"]
 
@@ -31,7 +37,7 @@ scale = Vector2( 0.3, 0.3 )
 [node name="Camera2D" type="Camera2D" parent="player2"]
 rotating = true
 current = true
-zoom = Vector2( 1.5, 1.5 )
+zoom = Vector2( 2, 2 )
 smoothing_enabled = true
 
 [node name="enemy" type="Node2D" parent="."]
@@ -108,6 +114,9 @@ scrollable = false
 
 [node name="Path2D" parent="map" instance=ExtResource( 8 )]
 zoomspeed = 50
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 6 )
 
 [connection signal="timeout" from="enemy/Timer" to="enemy" method="_on_Timer_timeout"]
 [connection signal="button_down" from="ui/upgrades/1" to="ui" method="_on_1_button_down"]

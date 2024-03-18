@@ -528,7 +528,7 @@ shape = SubResource( 1 )
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2( 1, 0 )
 collision_layer = 0
-collision_mask = 10
+collision_mask = 522
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 2 )
@@ -537,6 +537,7 @@ shape = SubResource( 2 )
 material = SubResource( 17 )
 frames = SubResource( 5 )
 animation = "run"
+frame = 27
 playing = true
 
 [node name="hit" type="CPUParticles2D" parent="."]

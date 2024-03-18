@@ -31,10 +31,12 @@ func apply_knockback():
 	$Area2D/CollisionShape2D.disabled
 	var blood = bld.instance()
 	get_parent().add_child(blood)
+	
 	blood.position = global_position
 
 func dead():
-	$CollisionShape2D.disabled
+	$CollisionShape2D.queue_free()
+	$Area2D.queue_free()
 	Global.score += 2
 	$hit.emitting = true
 	$anim.play("die")
@@ -47,6 +49,7 @@ func dead():
 
 func _on_Area2D_area_entered(area):
 	hp -= area.get_parent().dam()
+	apply_knockback()
 	if hp <= 0:
 		alive = false
 		dead()

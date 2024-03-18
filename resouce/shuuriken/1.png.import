@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/0006.png-e95f7033ab5e31abfb9dc62b3bf5e654.stex"
+path="res://.import/1.png-a6a4c6f208058c388ebf78d58b97b2e6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resouce/enemy/0006.png"
-dest_files=[ "res://.import/0006.png-e95f7033ab5e31abfb9dc62b3bf5e654.stex" ]
+source_file="res://resouce/shuuriken/1.png"
+dest_files=[ "res://.import/1.png-a6a4c6f208058c388ebf78d58b97b2e6.stex" ]
 
 [params]
 

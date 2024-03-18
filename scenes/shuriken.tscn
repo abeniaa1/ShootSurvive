@@ -1,23 +1,29 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scripts/shuriken.gd" type="Script" id=1]
+[ext_resource path="res://scripts/shurieken.gd" type="Script" id=1]
+[ext_resource path="res://resouce/shuuriken/1.png" type="Texture" id=2]
 
-[sub_resource type="QuadMesh" id=1]
+[sub_resource type="CircleShape2D" id=1]
+radius = 20.6155
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 18.3848
-
-[node name="shuriken" type="RigidBody2D"]
-mass = 0.01
-gravity_scale = 0.0
-linear_velocity = Vector2( 500, 0 )
-linear_damp = 5.0
+[node name="shurieken" type="KinematicBody2D"]
+collision_layer = 0
+collision_mask = 256
 script = ExtResource( 1 )
+speed = 500.0
+bounce_factor = 1.1
+damage = 0
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-position = Vector2( 0.499998, -0.499998 )
-scale = Vector2( 37, 37 )
-mesh = SubResource( 1 )
+[node name="1" type="Sprite" parent="."]
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 10
+collision_mask = 10
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
