@@ -1,8 +1,10 @@
-extends KinematicBody2D
+extends RigidBody2D
 
 var time = 1
 onready var timer = $Timer
-var cooldown = 3
+var cooldown = 3 / Global.multi
+export var damgedelt = 5
+
 
 func _ready():
 	timer.start(time)
@@ -10,10 +12,17 @@ func _ready():
 
 func _on_Timer_timeout():
 	$anim.play("boom")
-	$Timer2.start(0.8)
+
 
 func die():
 	queue_free()
 
-func _on_Timer2_timeout():
-	die()
+
+
+func dam():
+	return damgedelt
+
+
+func _on_anim_animation_finished(anim_name):
+	if anim_name == "boom":
+		die()

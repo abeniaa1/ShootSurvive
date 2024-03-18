@@ -2,7 +2,7 @@ extends Node2D
 
 var bomb = preload("res://scenes/bomb.tscn") 
 
-var cooldown = 3
+var cooldown = 10
 onready var cool = cooldown
 
 func _physics_process(delta):

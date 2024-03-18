@@ -6,7 +6,7 @@ var mode = null
 export var speed = 100.0
 var velocity = Vector2.ZERO
 var dir = null
-
+export var damgedelt = 1
 
 func _ready():
 	show_behind_parent = true
@@ -30,12 +30,17 @@ func _physics_process(delta):
 		position.x +=25*side
 
 
+func dam():
+	return damgedelt
+
 func _on_Area2D_area_entered(area):
 	$MeshInstance2D.hide()
 	stop = true
 	var layer = area.get_collision_layer()
+
 	$impact.playing = true
 	queue_free()
 
-func _on_Area2D_body_entered(body):
-	queue_free()
+
+func hole():
+	pass

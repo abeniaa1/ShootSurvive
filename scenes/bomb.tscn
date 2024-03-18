@@ -177,31 +177,32 @@ tracks/10/keys = {
 
 [sub_resource type="Animation" id=5]
 resource_name = "boom"
-length = 0.8
-tracks/0/type = "bezier"
-tracks/0/path = NodePath("range/CollisionShape2D:shape:radius")
+tracks/0/type = "value"
+tracks/0/path = NodePath("par:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 157.57, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.8 )
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("par:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("range/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
 tracks/2/type = "value"
-tracks/2/path = NodePath("range/CollisionShape2D:disabled")
+tracks/2/path = NodePath("AnimatedSprite:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -210,10 +211,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("AnimatedSprite:playing")
+tracks/3/path = NodePath("AnimatedSprite:animation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -222,10 +223,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ "EXPL" ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AnimatedSprite:animation")
+tracks/4/path = NodePath("AnimatedSprite:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -234,10 +235,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ "EXPL" ]
+"values": [ 0 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("AnimatedSprite:frame")
+tracks/5/path = NodePath("range:monitorable")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -246,19 +247,17 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ true ]
 }
-tracks/6/type = "value"
-tracks/6/path = NodePath("range:monitorable")
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("range/CollisionShape2D:shape:radius")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 180.898, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
 }
 
 [sub_resource type="Animation" id=7]
@@ -360,9 +359,9 @@ animations = [ {
 
 [sub_resource type="CircleShape2D" id=9]
 
-[node name="bomb" type="KinematicBody2D"]
-collision_layer = 0
-collision_mask = 0
+[node name="bomb" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource( 1 )
 
 [node name="par" type="CPUParticles2D" parent="."]
@@ -385,13 +384,11 @@ anims/boom = SubResource( 5 )
 anims/throw = SubResource( 7 )
 
 [node name="range" type="Area2D" parent="."]
-collision_layer = 136
-collision_mask = 136
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="range"]
 shape = SubResource( 6 )
-
-[node name="Timer2" type="Timer" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -406,6 +403,7 @@ playing = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 9 )
 
-[connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
+[connection signal="body_entered" from="range" to="." method="_on_range_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="AnimatedSprite/Timer" to="." method="_on_Timer_timeout"]

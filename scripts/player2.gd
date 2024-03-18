@@ -45,8 +45,9 @@ func _physics_process(delta):
 
 func find_closest_enemy():
 	var enemies = get_tree().get_nodes_in_group("enemies")
-	var closest_dis = float(1000)
+	var closest_dis = float(500)
 	var closest_pos = Vector2.ZERO
+	
 
 	for enemy in enemies:
 		var enemy_pos = enemy.position

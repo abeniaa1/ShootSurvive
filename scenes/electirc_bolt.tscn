@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/electirc_bolt.gd" type="Script" id=1]
+
+[sub_resource type="SegmentShape2D" id=1]
+b = Vector2( 976, -1 )
+
+[node name="electirc_bolt" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 136
+collision_mask = 136
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( -1, 0, 24, 11, 48, -7, 72, 8, 103, -4, 131, -12, 151, 1, 188, 14, 216, 7, 235, 13, 235, -3, 283, -4, 316, 19, 354, -4, 362, 4, 381, 10, 399, 11, 407, -9, 412, -14, 431, -5, 444, 10, 503, 33, 574, -8, 606, 0, 690, -10, 731, 15, 769, -1, 781, 18, 824, -3, 831, -16, 849, -14, 868, -37, 879, 0, 932, -1, 952, 30, 973, -20 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
