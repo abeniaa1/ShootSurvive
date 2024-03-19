@@ -4,6 +4,7 @@ var casting := false setget set_casting
 onready var line = $Line2D
 export var damage = 30
 
+
 func _ready():
 	set_physics_process(false)
 	appear()

@@ -42,8 +42,8 @@ func dead():
 	$anim.play("die")
 	Global.metal += 1
 
-
-
+func damager():
+	return damage
 
 
 

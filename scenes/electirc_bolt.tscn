@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/electirc_bolt.gd" type="Script" id=1]
+[ext_resource path="res://resouce/lazer/lazer.wav" type="AudioStream" id=2]
 
 [sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0.531646, 1 )
-colors = PoolColorArray( 0, 0.984375, 0.984375, 1, 1, 1, 1, 0 )
+colors = PoolColorArray( 0.490684, 0.0385895, 0.823242, 1, 1, 1, 1, 0 )
 
 [sub_resource type="GradientTexture" id=3]
 gradient = SubResource( 2 )
@@ -16,9 +17,14 @@ _data = [ Vector2( 0, 0.5 ), 0.0, 0.0, 0, 0, Vector2( 0.518571, 0.819018 ), 0.0,
 curve = SubResource( 4 )
 
 [sub_resource type="ParticlesMaterial" id=6]
+lifetime_randomness = 0.39
 flag_disable_z = true
+spread = 63.56
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 226.8
+initial_velocity = 1000.0
+initial_velocity_random = 0.7
+angular_velocity = 148.45
+angular_velocity_random = 0.37
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 0.74
@@ -26,7 +32,8 @@ scale_curve = SubResource( 5 )
 color_ramp = SubResource( 3 )
 
 [sub_resource type="Gradient" id=7]
-colors = PoolColorArray( 0.289063, 1, 0.987503, 1, 0.121569, 0.517647, 0.492119, 0 )
+offsets = PoolRealArray( 0, 0.558824, 1 )
+colors = PoolColorArray( 1, 0, 0, 1, 0.788143, 0.124844, 0.118687, 0.758824, 0.121569, 0.517647, 0.492119, 0 )
 
 [sub_resource type="GradientTexture2D" id=8]
 gradient = SubResource( 7 )
@@ -63,7 +70,7 @@ default_color = Color( 0, 1, 1, 1 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="Particles" type="Particles2D" parent="."]
-emitting = false
+amount = 20
 lifetime = 0.2
 process_material = SubResource( 6 )
 texture = SubResource( 8 )
@@ -85,5 +92,9 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 11 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

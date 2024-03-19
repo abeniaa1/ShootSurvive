@@ -7,7 +7,6 @@ export var cooldown = false
 var speed = 300
 var closest = Vector2.ZERO
 onready var cooldown_dur = 0.5
-onready var bomb = preload("res://scenes/bomb.tscn")
 var see = false
 export var hp = 10
 
@@ -57,6 +56,7 @@ func find_closest_enemy():
 			closest_pos = enemy_pos
 	return closest_pos
 func shoot(side):
+	$anim2.play("New Anim")
 	sound()
 	var bull = bullet.instance()
 	add_child(bull)

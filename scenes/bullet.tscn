@@ -39,7 +39,6 @@ collision_layer = 16
 collision_mask = 16
 script = ExtResource( 1 )
 speed = 4000.0
-damgedelt = 0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 modulate = Color( 1, 0.729412, 0.403922, 1 )
@@ -80,6 +79,7 @@ volume_db = -20.0
 texture = SubResource( 3 )
 color = Color( 0.796078, 0.243137, 0.027451, 1 )
 energy = 9.47
+mode = 1
 range_height = 3.8
 
 [node name="Line2D" type="Line2D" parent="."]

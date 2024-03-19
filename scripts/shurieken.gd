@@ -4,18 +4,25 @@ export var speed: float = 300
 export var bounce_factor: float = 1.01
 export var max_b = 5
 export var damage = 4
+onready var sound = $sfx
+var throw = "res://resouce/shuuriken/shuriken1.wav"
+var collide = "res://resouce/shuuriken/suriken 3 clash.wav"
 
 
 var velocity: Vector2
 
 func _ready() -> void:
+	sound.stream = load(throw)
+	sound.play()
 	velocity = Vector2(rand_range(-1, 1), rand_range(-1, 1)).normalized() * speed
 
 func _physics_process(delta: float) -> void:
-	rotation_degrees += 45
+	rotation_degrees += 15
 	var motion: Vector2 = velocity * delta
 	var collision: KinematicCollision2D = move_and_collide(motion)
 	if collision:
+		sound.stream = load(collide)
+		sound.play()
 		max_b -= 1
 		var normal: Vector2 = collision.normal
 		velocity = velocity.bounce(normal) * bounce_factor
@@ -27,4 +34,8 @@ func _physics_process(delta: float) -> void:
 
 func dam():
 	return damage
+
+
+
+
 
