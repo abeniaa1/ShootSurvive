@@ -6,7 +6,7 @@ export var max_b = 5
 export var damage = 4
 onready var sound = $sfx
 var throw = "res://resouce/shuuriken/shuriken1.wav"
-var collide = "res://resouce/shuuriken/suriken 3 clash.wav"
+var collide = "res://resouce/shuuriken/446102__justinvoke__metal-clank-1.wav"
 
 
 var velocity: Vector2
@@ -22,6 +22,7 @@ func _physics_process(delta: float) -> void:
 	var collision: KinematicCollision2D = move_and_collide(motion)
 	if collision:
 		sound.stream = load(collide)
+		sound.volume_db = -10
 		sound.play()
 		max_b -= 1
 		var normal: Vector2 = collision.normal
@@ -29,6 +30,7 @@ func _physics_process(delta: float) -> void:
 
 		motion = velocity * delta
 		move_and_collide(motion)
+		
 	if max_b < 0:
 		queue_free()
 

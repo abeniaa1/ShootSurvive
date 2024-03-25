@@ -19,18 +19,13 @@ func spawn():
 			prv = curve.get_point_position(i-1)
 		var nw_pos = Vector2(radius * cos(i), radius * sin(i))
 		curve.add_point(nw_pos)
-		var prob = 85
-		var gapped = false
-		if i > 10:
-			if prob >= rand_range(0,100) and !gapped:
-				var lan = land.instance()
-				add_child(lan)
-				lan.position = curve.get_point_position(i)
-				lan.set_name(i)
-				lan.set_dir(prv)
-				radius += i*5
-				gapped = true
-			else:
-				gapped = false
+		if i > 3:
+			$Line2D.add_point(nw_pos)
+			var lan = land.instance()
+			add_child(lan)
+			lan.position = curve.get_point_position(i)
+			lan.set_name(i)
+			lan.set_dir(prv)
+		radius += i*5
 
 

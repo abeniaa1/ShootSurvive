@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://scripts/player2.gd" type="Script" id=1]
 [ext_resource path="res://resouce/ARM/0018.png" type="Texture" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://resouce/ARM/0010.png" type="Texture" id=20]
 [ext_resource path="res://resouce/ARM/0015.png" type="Texture" id=21]
 [ext_resource path="res://resouce/ARM/0003.png" type="Texture" id=22]
+[ext_resource path="res://scripts/static.gd" type="Script" id=23]
 [ext_resource path="res://scripts/throw.gd" type="Script" id=54]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -221,6 +222,7 @@ enabled = true
 
 [node name="boom" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
+volume_db = -20.0
 
 [node name="Light2D" type="Light2D" parent="."]
 enabled = false
@@ -245,6 +247,7 @@ shape = SubResource( 10 )
 
 [node name="throwabls" type="Node2D" parent="."]
 script = ExtResource( 54 )
+srkn = true
 
 [node name="damged" type="Area2D" parent="."]
 position = Vector2( 0, 15 )
@@ -261,6 +264,9 @@ anims/idle = SubResource( 14 )
 [node name="Light2D2" type="Light2D" parent="."]
 texture = SubResource( 18 )
 texture_scale = 14.47
+
+[node name="static" type="Node2D" parent="."]
+script = ExtResource( 23 )
 
 [connection signal="timeout" from="time" to="." method="_on_time_timeout"]
 [connection signal="area_entered" from="damged" to="." method="_on_Area2D_area_entered"]

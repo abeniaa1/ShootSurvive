@@ -12,6 +12,7 @@ func _ready():
 
 func _on_Timer_timeout():
 	$anim.play("boom")
+	Global.shake()
 
 
 func die():
@@ -21,7 +22,6 @@ func die():
 
 func dam():
 	return damgedelt
-
 
 func _on_anim_animation_finished(anim_name):
 	if anim_name == "boom":

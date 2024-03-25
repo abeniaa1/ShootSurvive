@@ -540,7 +540,7 @@ shape = SubResource( 2 )
 material = SubResource( 17 )
 frames = SubResource( 5 )
 animation = "run"
-frame = 34
+frame = 2
 playing = true
 
 [node name="hit" type="CPUParticles2D" parent="."]

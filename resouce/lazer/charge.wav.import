@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/suriken 3 clash.wav-fd26fce3edd1415fd2328beda303f0c6.sample"
+path="res://.import/charge.wav-73327c3acfdd5aa15348ba55ccc3a424.sample"
 
 [deps]
 
-source_file="res://resouce/shuuriken/suriken 3 clash.wav"
-dest_files=[ "res://.import/suriken 3 clash.wav-fd26fce3edd1415fd2328beda303f0c6.sample" ]
+source_file="res://resouce/lazer/charge.wav"
+dest_files=[ "res://.import/charge.wav-73327c3acfdd5aa15348ba55ccc3a424.sample" ]
 
 [params]
 

@@ -7,6 +7,7 @@ export var hp = 3
 var alive = true
 var damage = 2
 onready var bld = preload("res://scenes/blood.tscn")
+onready var damind = preload("res://scenes/txt.tscn")
 
 func _ready():
 	$anim.play("idle")
@@ -26,11 +27,13 @@ func _physics_process(delta):
 		move_and_collide(rotated_motion)
 		$hit.look_at(dir)
 
+
 func apply_knockback():
 	$anim.play("hit")
 	$Area2D/CollisionShape2D.disabled
 	var blood = bld.instance()
 	get_parent().add_child(blood)
+	
 	
 	blood.position = global_position
 
@@ -48,8 +51,10 @@ func damager():
 
 
 func _on_Area2D_area_entered(area):
-	hp -= area.get_parent().dam()
+	var dam = area.get_parent().dam()
+	hp -= dam
 	apply_knockback()
+	show_damage(dam)
 	if hp <= 0:
 		alive = false
 		dead()
@@ -58,3 +63,9 @@ func _on_Area2D_area_entered(area):
 
 
 
+func show_damage(d):
+	var note = damind.instance()
+	get_parent().add_child(note)
+	note.position = position
+	note.text(d)
+	

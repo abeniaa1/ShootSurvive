@@ -63,7 +63,6 @@ func shoot(side):
 	bull.set_mode(2)
 	bull.dir(side)
 	shoot_light(side)
-
 	if side == 1:
 		var hand = $handR
 		hand.frame = 0
