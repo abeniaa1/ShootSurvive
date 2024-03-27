@@ -26,3 +26,4 @@ func dam():
 func _on_anim_animation_finished(anim_name):
 	if anim_name == "boom":
 		die()
+
