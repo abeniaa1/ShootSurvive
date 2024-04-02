@@ -1,6 +1,6 @@
 [gd_scene load_steps=52 format=2]
 
-[ext_resource path="res://bomb.gd" type="Script" id=1]
+[ext_resource path="res://scripts/bomb.gd" type="Script" id=1]
 [ext_resource path="res://resouce/bomb/fly/0011.png" type="Texture" id=2]
 [ext_resource path="res://resouce/bomb/fly/0012.png" type="Texture" id=3]
 [ext_resource path="res://resouce/bomb/fly/0013.png" type="Texture" id=4]

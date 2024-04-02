@@ -5,8 +5,8 @@ export var NOISE_SHAKE_SPEED: float = 30.0
 export var NOISE_SWAY_SPEED: float = .60
 # Noise returns values in the range (-1, 1)
 # So this is how much to multiply the returned value by
-export var NOISE_SHAKE_STRENGTH: float = 60.0
-export var NOISE_SWAY_STRENGTH: float = 10.0
+export var NOISE_SHAKE_STRENGTH: float = 6.0
+export var NOISE_SWAY_STRENGTH: float = 1.0
 # The starting range of possible offsets using random values
 export var RANDOM_SHAKE_STRENGTH: float = 10.0
 # Multiplier for lerping the shake strength to zero
@@ -28,25 +28,36 @@ var shake_type: int = ShakeType.Random
 var shake_strength: float = 0.0
 
 func _ready() -> void:
+	apply_noise_sway()
 	rand.randomize()
 	
 	# Randomize the generated noise
 	noise.seed = rand.randi()
 	# Period affects how quickly the noise changes values
-	noise.period = 2
+	noise.period = 5
 	
 	
 func _physics_process(delta):
-	var shake = Global.shake
-	if shake == true:
-		apply_random_shake()
-		
-	
+	var shake = Global.shak
+	if shake:
+		if Global.intensity == 1:
+			apply_random_shake(1)
+			yield(get_tree().create_timer(.3,false),"timeout")
+			Global.shak = false
 
+		if Global.intensity == 2:
+			apply_random_shake(2)
+			yield(get_tree().create_timer(.1,false),"timeout")
+			Global.shak = false
 	
-func apply_random_shake() -> void:
-	shake_strength = RANDOM_SHAKE_STRENGTH
-	shake_type = ShakeType.Random
+func apply_random_shake(i) -> void:
+	if i == 1:
+		shake_strength = RANDOM_SHAKE_STRENGTH
+		shake_type = ShakeType.Random
+	if i == 2:
+		shake_strength = 3
+		shake_type = ShakeType.Random
+	
 	
 func apply_noise_shake() -> void:
 	shake_strength = NOISE_SHAKE_STRENGTH
@@ -86,3 +97,4 @@ func get_random_offset() -> Vector2:
 		rand.randf_range(-shake_strength, shake_strength),
 		rand.randf_range(-shake_strength, shake_strength)
 	)
+

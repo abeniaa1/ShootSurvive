@@ -22,6 +22,7 @@ func set_dir(rot):
 	areacol.shape.extents.x = length/2
 	areacol.position.x += length/2
 
+
 	
 func last():
 	return position

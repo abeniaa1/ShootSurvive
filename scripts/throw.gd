@@ -5,7 +5,7 @@ var lazer = preload("res://scenes/electirc_bolt.tscn")
 var shuriken = preload("res://scenes/shuriken.tscn")
 export var bombs = false
 export var lazering = false
-export var srkn = false
+export var suriken = false
 
 var cooldown = 2
 onready var cool = cooldown
@@ -18,7 +18,8 @@ func _physics_process(delta):
 			get_parent().get_parent().get_parent().add_child(boom)
 			boom.position = Global.player_pos
 			boom.rotation_degrees = rand_range(0,360)
-		if srkn:
+			cool = cooldown
+		if suriken:
 			var srkn = shuriken.instance()
 			get_parent().get_parent().get_parent().add_child(srkn)
 			srkn.position = Global.player_pos
@@ -28,3 +29,4 @@ func _physics_process(delta):
 			var laz = lazer.instance()
 			add_child(laz)
 			laz.rotation_degrees = rand_range(0,359)
+			cool = cooldown

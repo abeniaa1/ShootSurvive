@@ -7,8 +7,7 @@ export var cooldown = false
 var speed = 300
 var closest = Vector2.ZERO
 onready var cooldown_dur = 0.5
-var see = false
-export var hp = 10
+export var hp = 25
 
 func _process(delta):
 	
@@ -58,6 +57,7 @@ func find_closest_enemy():
 func shoot(side):
 	$anim2.play("New Anim")
 	sound()
+	Global.shake(2)
 	var bull = bullet.instance()
 	add_child(bull)
 	bull.set_mode(2)
@@ -111,16 +111,51 @@ func move():
 	input_vector = input_vector.normalized()
 	input_vector = get_parent().get_node("ui/Virtual joystick").get_output()
 	var velocity = input_vector * speed
+	move_dir(input_vector)
 	move_and_slide(velocity)
 	
 func _on_time_timeout():
 	cooldown = false
 
-
+func move_dir(dir):
+	var direction = rad2deg(dir.angle()) + 180
+	var stand = true
+	if dir == Vector2(0,0):
+		$playa.playing = false
+		stand = true
+	else:
+		stand = false
+		$playa.playing = true
+	if direction >= 22.5 and direction < 67.5:
+		$playa.flip_h = true
+		$playa.play("d2")
+	if direction >= 67.5 and direction < 112.5:
+		$playa.flip_h = false
+		$playa.play("b")
+	if direction >= 112.5 and direction < 157.5:
+		$playa.flip_h = false
+		$playa.play("d2")
+	if direction >= 157.5 and direction < 202.5 and !stand:
+		$playa.flip_h = false
+		$playa.play("s")
+	if direction >= 202.5 and direction < 247.5:
+		$playa.flip_h = false
+		$playa.play("d1")
+	if direction >= 247.5 and direction < 292.5:
+		$playa.flip_h = false
+		$playa.play("f")
+	if direction >= 292.5 and direction < 337.5:
+		$playa.flip_h = true
+		$playa.play("d1")
+	if direction >= 337.5:
+		$playa.flip_h = true
+		$playa.play("s")
 
 func _on_Area2D_area_entered(area):
 	var dam = area.get_parent().damage
+	$anim.play("damaged")
 	hp -= dam
 	if hp == 0:
-		print("dead")
+		queue_free()
+
 

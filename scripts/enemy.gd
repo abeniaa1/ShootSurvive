@@ -25,7 +25,6 @@ func _physics_process(delta):
 		var motion = velocity * delta
 		var rotated_motion = motion.rotated(rotation)  
 		move_and_collide(rotated_motion)
-		$hit.look_at(dir)
 
 
 func apply_knockback():
@@ -33,17 +32,14 @@ func apply_knockback():
 	$Area2D/CollisionShape2D.disabled
 	var blood = bld.instance()
 	get_parent().add_child(blood)
-	
-	
 	blood.position = global_position
 
 func dead():
 	$CollisionShape2D.queue_free()
 	$Area2D.queue_free()
-	Global.score += 2
-	$hit.emitting = true
+	Global.score += 5
 	$anim.play("die")
-	Global.metal += 1
+	Global.metal += 5
 
 func damager():
 	return damage
@@ -69,3 +65,15 @@ func show_damage(d):
 	note.position = position
 	note.text(d)
 	
+
+
+func _on_damage_area_entered(area):
+	set_physics_process(false)
+
+
+
+
+
+func _on_damage_area_exited(area):
+	set_physics_process(true)
+

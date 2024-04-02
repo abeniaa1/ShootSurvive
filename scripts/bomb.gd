@@ -12,7 +12,7 @@ func _ready():
 
 func _on_Timer_timeout():
 	$anim.play("boom")
-	Global.shake()
+	Global.shake(1)
 
 
 func die():
