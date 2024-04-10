@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/spwnPath2D.gd" type="Script" id=1]
-[ext_resource path="res://resouce/ground/ook.png" type="Texture" id=2]
+[ext_resource path="res://resouce/ground/pattern_12.png" type="Texture" id=2]
 
 [sub_resource type="Curve2D" id=1]
 bake_interval = 51.02
@@ -12,10 +12,12 @@ _data = {
 [node name="Path2D" type="Path2D"]
 curve = SubResource( 1 )
 script = ExtResource( 1 )
-zoomspeed = 10
 
 [node name="Line2D" type="Line2D" parent="."]
 width = 40.0
 default_color = Color( 0.447059, 0.447059, 0.447059, 1 )
 texture = ExtResource( 2 )
 texture_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2( 25, 25 )

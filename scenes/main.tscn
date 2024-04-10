@@ -5,7 +5,7 @@
 [ext_resource path="res://scripts/enemy_spawner.gd" type="Script" id=3]
 [ext_resource path="res://scripts/poweup.gd" type="Script" id=4]
 [ext_resource path="res://scripts/ui.gd" type="Script" id=5]
-[ext_resource path="res://resouce/ground/grd.png" type="Texture" id=6]
+[ext_resource path="res://resouce/ground/pattern_74.png" type="Texture" id=6]
 [ext_resource path="res://scenes/Camera2D.tscn" type="PackedScene" id=7]
 [ext_resource path="res://resouce/ground/Path2D.tscn" type="PackedScene" id=8]
 [ext_resource path="res://tint.ttf" type="DynamicFontData" id=9]
@@ -32,23 +32,24 @@ bg_color = Color( 1, 0, 0, 1 )
 [sub_resource type="Environment" id=6]
 background_mode = 4
 glow_enabled = true
-glow_intensity = 0.3
+glow_intensity = 0.15
 glow_bloom = 0.1
 glow_blend_mode = 0
 
 [node name="main" type="Node2D"]
 
 [node name="06" type="Sprite" parent="."]
-modulate = Color( 0.372549, 0.372549, 0.372549, 1 )
-self_modulate = Color( 0.737255, 0.737255, 0.737255, 1 )
-position = Vector2( -67, -54 )
+modulate = Color( 0.0901961, 0.0901961, 0.0901961, 1 )
+position = Vector2( 3530, 0 )
+scale = Vector2( 0.25, 0.25 )
 z_index = -6
 texture = ExtResource( 6 )
 region_enabled = true
-region_rect = Rect2( 10000, -2356.18, 20000, 20000 )
+region_rect = Rect2( 10000, -2356.18, 50000, 50000 )
 
 [node name="player2" parent="." instance=ExtResource( 1 )]
 scale = Vector2( 0.3, 0.3 )
+speed = 300
 
 [node name="Camera2D" type="Camera2D" parent="player2"]
 visible = false
@@ -152,7 +153,6 @@ scrollable = false
 [node name="map" type="Node2D" parent="."]
 
 [node name="Path2D" parent="map" instance=ExtResource( 8 )]
-zoomspeed = 50
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 6 )

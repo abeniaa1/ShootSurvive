@@ -4,10 +4,13 @@ var click_pos = Vector2(0, 0)
 const bullet = preload("res://scenes/bullet.tscn")
 var side = 0
 export var cooldown = false
-var speed = 300
+export var speed = 300
 var closest = Vector2.ZERO
 onready var cooldown_dur = 0.5
 export var hp = 25
+
+func _ready():
+	randomize()
 
 func _process(delta):
 	
@@ -101,6 +104,7 @@ func hide():
 	pass
 
 func sound():
+	$boom.pitch_scale = rand_range(0.8,2)
 	$boom.play()
 
 func move():
