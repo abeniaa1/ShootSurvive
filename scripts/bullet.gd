@@ -15,7 +15,7 @@ func set_mode(mod):
 	
 func set_direction(direction: Vector2):
 	velocity = direction.normalized() * speed
-	$CPUParticles2D.look_at(direction)
+	look_at(direction)
 	dir = direction
 func dir(si):
 	side = -si

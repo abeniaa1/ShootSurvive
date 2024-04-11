@@ -28,6 +28,7 @@ func _physics_process(delta):
 
 
 func apply_knockback():
+	$eyes.blinking()
 	$anim.play("hit")
 	$Area2D/CollisionShape2D.disabled
 	var blood = bld.instance()

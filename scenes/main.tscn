@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://joystick/virtual_joystick.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/Camera2D.tscn" type="PackedScene" id=7]
 [ext_resource path="res://resouce/ground/Path2D.tscn" type="PackedScene" id=8]
 [ext_resource path="res://tint.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://sound/sound.mp3" type="AudioStream" id=10]
 
 [sub_resource type="Animation" id=7]
 resource_name = "New Anim"
@@ -149,6 +150,11 @@ margin_bottom = 28.0
 custom_styles/grabber_area = SubResource( 10 )
 editable = false
 scrollable = false
+
+[node name="soundtrack" type="AudioStreamPlayer2D" parent="ui"]
+stream = ExtResource( 10 )
+volume_db = -16.347
+autoplay = true
 
 [node name="map" type="Node2D" parent="."]
 

@@ -104,7 +104,7 @@ func hide():
 	pass
 
 func sound():
-	$boom.pitch_scale = rand_range(0.8,2)
+	$boom.pitch_scale = rand_range(2,5)
 	$boom.play()
 
 func move():

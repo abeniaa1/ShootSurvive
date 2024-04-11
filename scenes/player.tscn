@@ -270,7 +270,7 @@ scale = Vector2( 1.2, 1.3 )
 z_index = 7
 frames = SubResource( 20 )
 animation = "f"
-frame = 9
+frame = 11
 playing = true
 
 [node name="handL" type="AnimatedSprite" parent="."]
