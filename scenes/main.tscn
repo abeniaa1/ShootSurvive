@@ -70,6 +70,12 @@ zoom = Vector2( 1.5, 1.5 )
 NOISE_SHAKE_STRENGTH = 40.0
 NOISE_SWAY_STRENGTH = 5.0
 
+[node name="soundtrack" type="AudioStreamPlayer2D" parent="player2"]
+scale = Vector2( 3.33333, 3.33333 )
+stream = ExtResource( 10 )
+volume_db = -16.347
+autoplay = true
+
 [node name="enemy" type="Node2D" parent="."]
 script = ExtResource( 3 )
 
@@ -150,11 +156,6 @@ margin_bottom = 28.0
 custom_styles/grabber_area = SubResource( 10 )
 editable = false
 scrollable = false
-
-[node name="soundtrack" type="AudioStreamPlayer2D" parent="ui"]
-stream = ExtResource( 10 )
-volume_db = -16.347
-autoplay = true
 
 [node name="map" type="Node2D" parent="."]
 

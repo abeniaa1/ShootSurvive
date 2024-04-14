@@ -8,6 +8,7 @@ export var speed = 300
 var closest = Vector2.ZERO
 onready var cooldown_dur = 0.5
 export var hp = 25
+export var gun = true
 
 func _ready():
 	randomize()
@@ -23,7 +24,7 @@ func _physics_process(delta):
 	move()
 	closest = find_closest_enemy()
 	Global.player_pos = position
-	if !cooldown:
+	if !cooldown and gun:
 		click_pos = closest
 		var hand_node = null
 		var rotation_offset = 0.0
@@ -77,7 +78,7 @@ func shoot(side):
 	if side == -1:
 		var hand = $handL
 		hand.frame = 0
-		hand.play("default")
+		hand.play("default"ንን)
 		bull.position = $handL.position
 		var direction = Vector2.LEFT.rotated(hand.rotation)
 		bull.set_direction(direction)
@@ -92,7 +93,8 @@ func shoot_light(side):
 	elif side < 0:
 		pass
 	pass
-
+	
+	
 	var timer = Timer.new()
 	add_child(timer)
 	timer.wait_time = 1.0
@@ -117,6 +119,7 @@ func move():
 	var velocity = input_vector * speed
 	move_dir(input_vector)
 	move_and_slide(velocity)
+	$static.move_dir(input_vector)
 	
 func _on_time_timeout():
 	cooldown = false
