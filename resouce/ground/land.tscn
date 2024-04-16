@@ -12,6 +12,7 @@ extents = Vector2( 11, 15 )
 size = Vector2( 23, 1 )
 
 [node name="land" type="StaticBody2D"]
+visible = false
 collision_layer = 785
 collision_mask = 785
 script = ExtResource( 1 )

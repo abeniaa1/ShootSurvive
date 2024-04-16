@@ -5,6 +5,7 @@ export var bounce_factor: float = 1.01
 export var max_b = 5
 export var damage = 4
 onready var sound = $sfx
+var cooldown = 2
 var throw = "res://resouce/shuuriken/shuriken1.wav"
 var collide = "res://resouce/shuuriken/446102__justinvoke__metal-clank-1.wav"
 

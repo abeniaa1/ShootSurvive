@@ -1,10 +1,10 @@
 extends Node2D
 
 
-var count = 25
-var radius = 2
-var intended_radius = 90
-var intended_scale = 0.15  # Set this to the desired scale of your eyes
+var count = 12 + Global.score/100
+var radius = 5
+var intended_radius = 70
+var intended_scale = 0.1  # Set this to the desired scale of your eyes
 
 onready var curve = Line2D.new()
 onready var eye = preload("res://scenes/eye.tscn")
@@ -38,7 +38,7 @@ func eyes():
 		var eyez = eye.instance()
 		add_child(eyez)
 		eyez.position = points[i]
-		var scale_factor = abs(sin((i + 1) * scale_increment))  # Sinusoidal function for scale
+		var scale_factor = abs(sin((i + 5) * scale_increment))  # Sinusoidal function for scale
 		eyez.scale = Vector2(scale_factor, scale_factor)
 		eyez.look_at(Vector2(0,0))
 

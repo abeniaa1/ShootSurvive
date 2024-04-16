@@ -9,6 +9,7 @@ radius = 40.506
 _data = [ Vector2( 0, 0.953988 ), 0.0, 0.0, 0, 0, Vector2( 0.727419, 0.610429 ), -2.47239, -2.47239, 0, 0, Vector2( 0.998387, 0 ), 0.0, 0.0, 0, 0 ]
 
 [node name="tentacle" type="Node2D"]
+scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 1 )
 
 [node name="Label" type="Label" parent="."]

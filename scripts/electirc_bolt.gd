@@ -2,13 +2,13 @@ extends RayCast2D
 
 var casting := false setget set_casting
 onready var line = $Line2D
-export var damage = 30
+export var damage = 3
+var cooldown = 8
 
 
 func _ready():
 	set_physics_process(false)
 	appear()
-	
 	line.points[1] = Vector2.ZERO
 
 
@@ -25,6 +25,9 @@ func _physics_process(delta):
 	var length = self.position.distance_to(cast_point)
 	var area = $Area2D/CollisionShape2D
 	var shpe = area.shape.duplicate(true) 
+	var mesh = $MeshInstance2D
+	mesh.scale.x = length
+	
 	area.shape = shpe
 	area.shape.extents.x = length/2
 	area.position.x =  length/2

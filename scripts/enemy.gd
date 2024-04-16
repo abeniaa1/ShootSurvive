@@ -6,11 +6,18 @@ export var dead = false
 export var hp = 3
 var alive = true
 var damage = 2
+enum rec_dam {slice,shoot,explosion}
 onready var bld = preload("res://scenes/blood.tscn")
 onready var damind = preload("res://scenes/txt.tscn")
 
+
 func _ready():
+	$tentacles.spawn_tentacles(10,85)
 	$anim.play("idle")
+	randomize()
+	$Skin.hide()
+	$eyes.hide()
+	$tentacles.hide()
 
 func alive():
 	return alive
@@ -25,7 +32,7 @@ func _physics_process(delta):
 		var motion = velocity * delta
 		var rotated_motion = motion.rotated(rotation)  
 		move_and_collide(rotated_motion)
-
+	
 
 func apply_knockback():
 	$eyes.blinking()
@@ -52,13 +59,16 @@ func _on_Area2D_area_entered(area):
 	hp -= dam
 	apply_knockback()
 	show_damage(dam)
+	sound()
 	if hp <= 0:
 		alive = false
 		dead()
 	if hp > 0 :
 		apply_knockback()
 
-
+func sound():
+	$splatter.pitch_scale = rand_range(1,5)
+	$splatter.play()
 
 func show_damage(d):
 	var note = damind.instance()
@@ -78,3 +88,15 @@ func _on_damage_area_entered(area):
 func _on_damage_area_exited(area):
 	set_physics_process(true)
 
+
+
+func _on_VisibilityNotifier2D_screen_exited():
+	$Skin.hide()
+	$eyes.hide()
+	$tentacles.hide()
+
+
+func _on_VisibilityNotifier2D_screen_entered():
+	$Skin.show()
+	$eyes.show()
+	$tentacles.show()

@@ -16,9 +16,9 @@ func _ready():
 func _process(delta):
 	
 	var multiplier = Global.multi
-	get_parent().get_node("ui/score").text = str(Global.score)
+	get_parent().get_node("ui_2/score").text = str(Global.score)
 	if Global.score > 50 * multiplier:
-		get_parent().get_node("ui")._upgrade()
+		get_parent().get_node("ui_2").upgrade()
 
 func _physics_process(delta):
 	move()
@@ -42,8 +42,11 @@ func _physics_process(delta):
 			hand_node.rotation = target_rotation
 			shoot(side)
 			cooldown = true
-			
 			$time.start(cooldown_dur)
+	if !gun:
+		$handL.hide()
+		$handR.hide()
+
 
 func find_closest_enemy():
 	var enemies = get_tree().get_nodes_in_group("enemies")
@@ -78,12 +81,11 @@ func shoot(side):
 	if side == -1:
 		var hand = $handL
 		hand.frame = 0
-		hand.play("default"ንን)
+		hand.play("default")
 		bull.position = $handL.position
 		var direction = Vector2.LEFT.rotated(hand.rotation)
 		bull.set_direction(direction)
 		shoot_light(side)
-	
 
 
 func shoot_light(side):
@@ -106,7 +108,7 @@ func hide():
 	pass
 
 func sound():
-	$boom.pitch_scale = rand_range(2,5)
+	$boom.pitch_scale = rand_range(2,7)
 	$boom.play()
 
 func move():
@@ -115,7 +117,7 @@ func move():
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	input_vector = input_vector.normalized()
-	input_vector = get_parent().get_node("ui/Virtual joystick").get_output()
+	input_vector = get_parent().get_node("ui_2/Virtual joystick").get_output()
 	var velocity = input_vector * speed
 	move_dir(input_vector)
 	move_and_slide(velocity)
@@ -127,11 +129,13 @@ func _on_time_timeout():
 func move_dir(dir):
 	var direction = rad2deg(dir.angle()) + 180
 	var stand = true
+	
 	if dir == Vector2(0,0):
 		$playa.playing = false
 		stand = true
 	else:
 		stand = false
+		$Light2D.rotation = dir.angle()
 		$playa.playing = true
 	if direction >= 22.5 and direction < 67.5:
 		$playa.flip_h = true
@@ -162,7 +166,7 @@ func _on_Area2D_area_entered(area):
 	var dam = area.get_parent().damage
 	$anim.play("damaged")
 	hp -= dam
-	if hp == 0:
-		queue_free()
+	if hp <= 0:
+		get_tree().quit()
 
 

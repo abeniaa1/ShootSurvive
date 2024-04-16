@@ -1,6 +1,6 @@
 extends Node2D
 
-export var da = 5
+export var da = 1
 export var rate_persec = .5
 var time = rate_persec
 var sfx = load("res://resouce/blade/Ninja Star.wav")

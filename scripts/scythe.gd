@@ -1,25 +1,29 @@
 extends Node2D
 
 var damage = 1
-var cooldown_dur = 3
+var cooldown_dur = 0.5
+var can_attack = true 
 
 func dam():
 	return damage
 
 func _ready():
 	$anm.play("idle")
+	randomize()
 
-func point_to(dir):
-	look_at(dir።ኖ፠፠)ን
-	ኖኖኦኖኖንኖር
 
 func _physics_process(_delta):
-	yield(get_tree().create_timer(cooldown_dur,false),"timeout")
-	attack()
-
-func attack():ጅህልጅ
+	var direction =  get_parent().dir()
+	rotation = direction.angle()
+	if can_attack:
+		attack()
+		$sfx.pitch_scale = rand_range(1,3)
+		can_attack = false
+func attack():
 	$anm.play("attack")
 
+
 func _on_anm_animation_finished(anim_name):
-	if anim_name == "attack":
-		$anm.play("idle")
+	$anm.play("idle")
+	yield(get_tree().create_timer(cooldown_dur,false),"timeout")
+	can_attack = true
